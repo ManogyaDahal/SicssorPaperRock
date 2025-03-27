@@ -16,11 +16,11 @@ const(
 
 func main(){
   greetings();
+  var userPoints, botPoints int
   for{
     botValue := randomGen(); 
     userValue := 99 //for invalid key press
     userInput := readingSingleKey() 
-    userPoints, botPoints := 0, 0
     invalid := false 
     //Pressing q exits the program
     if userInput == 'q'{
@@ -85,13 +85,17 @@ func greetings(){
     "Instructions for playing the game:\n",
     "-r (rock), -p (paper), -s (siscors)\n",
     )
-  fmt.Println("Press 'y' to continue to the game or Q to exit.........")
-  char := readingSingleKey()
+  fmt.Println("Press 'y' to continue to the game or 'q' to exit.........")
   for{
+  char := readingSingleKey()
     if char == 'y'{
+      clearScreen()
+      fmt.Println("***Game Start***")
       break
-    } else {
-      fmt.Printf("Please Press Y to continue or q to exit ")
+    } else if char == 'q'{
+      os.Exit(0)
+    } else{
+      fmt.Println("Please Press y to continue or q to exit only ")
     }
   }
 }
@@ -118,7 +122,7 @@ func clearScreen(){
 /*
   things to implement:
     - clearing the screen  (done)
-    - displaying the points on the screen
+    - displaying the points on the screen (done:after pressing t)
     - displaying the bot's rock paper or sicssors on the screen
       {idea: making random gen func return string too while returning the random value}
     - refactoring the code into functions
