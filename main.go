@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 	"math/rand"
-  "os/exec"
-  "os"
+	"os"
+	"os/exec"
 
 	"github.com/eiannone/keyboard"
 )
@@ -21,6 +21,7 @@ func main(){
     botValue := randomGen(); 
     userValue := 99 //for invalid key press
     userInput := readingSingleKey() 
+    clearScreen()
     invalid := false 
     //Pressing q exits the program
     if userInput == 'q'{
@@ -29,12 +30,6 @@ func main(){
     if userInput == 'c'{
       clearScreen()
     }
-    if userInput == 't'{
-      clearScreen()
-      fmt.Println("User points: ", userPoints)
-      fmt.Println("bot points: " ,botPoints)
-    }
-
     switch userInput{
     case 's':
       userValue = 0
@@ -51,41 +46,56 @@ func main(){
       switch{
       case userValue == 0 && botValue == 1:
         userPoints += 1
+        fmt.Println("User: Sicssors and  bot: Paper") 
         fmt.Println("User Won") 
 
       case userValue == 1 && botValue == 2:
         userPoints += 1
+        fmt.Println("User: Paper and  bot: Rock") 
         fmt.Println("User Won") 
 
       case userValue == 2 && botValue == 0:
         userPoints += 1
+        fmt.Println("User: Rock and  bot: Sicssors") 
         fmt.Println("User Won") 
 
       case botValue == 0 && userValue== 1:
         botPoints += 1
+        fmt.Println("User: Paper and  bot: Siscssors") 
         fmt.Println("Bot Won") 
 
       case botValue == 1 && userValue == 2:
         botPoints += 1
+        fmt.Println("User: Rock and  bot: Paper") 
         fmt.Println("Bot Won") 
 
       case botValue == 2 && userValue == 0:
         botPoints += 1
+        fmt.Println("User: Paper and  bot: Siscsors") 
         fmt.Println("Bot Won") 
       default:
+        if userInput == 0 {
+        fmt.Println("User: Siscors and  bot: Siscsors") 
+        } else if userInput == 1 {
+        fmt.Println("User: Paper and  bot: Paper") 
+        }
+        fmt.Println("User: Rock and  bot: Rock") 
         fmt.Println("Draw Case")
       }
     }
+    showPoints(userPoints, botPoints)
   }
 }
 
 func greetings(){
   fmt.Println(
+    "************************************\n",
     "Thank you for playing this game.\n",
     "Instructions for playing the game:\n",
-    "-r (rock), -p (paper), -s (siscors)\n",
+    "-r (rock)\n-p (paper)\n-s (siscors)\n",
+    "************************************",
     )
-  fmt.Println("Press 'y' to continue to the game or 'q' to exit.........")
+  fmt.Println("Press 'y' to continue to the game or 'q' to exit...")
   for{
   char := readingSingleKey()
     if char == 'y'{
@@ -118,13 +128,14 @@ func clearScreen(){
   cmd.Run()
 }
 
+func showPoints(userPoints, botPoints int){
+      fmt.Printf("**************************\n")
+      fmt.Println("Press 'q' to exit")
+      fmt.Printf("Press 's', 'p' or 'r' to play next move")
+      fmt.Printf("\n**************************\n")
+      fmt.Println("*** Total points ****")
+      fmt.Println("User points: ", userPoints)
+      fmt.Println("bot points: " ,botPoints)
+}
 
-/*
-  things to implement:
-    - clearing the screen  (done)
-    - displaying the points on the screen (done:after pressing t)
-    - displaying the bot's rock paper or sicssors on the screen
-      {idea: making random gen func return string too while returning the random value}
-    - refactoring the code into functions
-    -Making ui tidy 
-*/
+/* Make UI Tidy */
