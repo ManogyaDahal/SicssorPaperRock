@@ -1,0 +1,7 @@
+module SicsorsPaperRock
+
+go 1.23.6
+
+require github.com/eiannone/keyboard v0.0.0-20220611211555-0d226195f203
+
+require golang.org/x/sys v0.31.0 // indirect
