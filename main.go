@@ -33,10 +33,13 @@ func main(){
     switch userInput{
     case 's':
       userValue = 0
+			printSicssors()
     case 'p':
       userValue = 1
+			printPaper()
     case 'r':
       userValue = 2
+			Printrock()
     default:
       invalid = true 
       fmt.Println("Enter a valid input") 
@@ -46,39 +49,48 @@ func main(){
       switch{
       case userValue == 0 && botValue == 1:
         userPoints += 1
+				printPaper()
         fmt.Println("User: Sicssors and  bot: Paper") 
         fmt.Println("User Won") 
 
       case userValue == 1 && botValue == 2:
         userPoints += 1
+				Printrock()
         fmt.Println("User: Paper and  bot: Rock") 
         fmt.Println("User Won") 
 
       case userValue == 2 && botValue == 0:
         userPoints += 1
+				printSicssors()
         fmt.Println("User: Rock and  bot: Sicssors") 
         fmt.Println("User Won") 
 
       case botValue == 0 && userValue== 1:
         botPoints += 1
+				printSicssors()
         fmt.Println("User: Paper and  bot: Siscssors") 
         fmt.Println("Bot Won") 
 
       case botValue == 1 && userValue == 2:
         botPoints += 1
+				printPaper()
         fmt.Println("User: Rock and  bot: Paper") 
         fmt.Println("Bot Won") 
 
       case botValue == 2 && userValue == 0:
         botPoints += 1
+				printSicssors()
         fmt.Println("User: Paper and  bot: Siscsors") 
         fmt.Println("Bot Won") 
       default:
         if userInput == 0 {
+					printSicssors()
         fmt.Println("User: Siscors and  bot: Siscsors") 
         } else if userInput == 1 {
+					printPaper()
         fmt.Println("User: Paper and  bot: Paper") 
         }
+				Printrock()
         fmt.Println("User: Rock and  bot: Rock") 
         fmt.Println("Draw Case")
       }
@@ -108,6 +120,42 @@ func greetings(){
       fmt.Println("Please Press y to continue or q to exit only ")
     }
   }
+}
+
+func printSicssors(){
+fmt.Println(
+
+"    ________ \n",
+"---'   ____)____\n",
+"          ______)\n",
+"       __________)\n",
+"      (____)\n",
+"---.__(___)\n",
+"                   ",
+		)
+}
+func printPaper(){
+fmt.Println(
+
+"     _______\n",
+"---'    ____)____\n",
+"           ______)\n",
+"          _______)\n",
+"         _______)\n",
+"---.__________)\n",
+	"",
+		)
+
+}
+func Printrock(){
+fmt.Println(
+"    _______\n",
+"---'   ____)\n",
+"      (_____)\n",
+"      (_____)\n",
+"      (____)\n",
+"---.__(___) \n",
+	)
 }
 
 func randomGen()int{
