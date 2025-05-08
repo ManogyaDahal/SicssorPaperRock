@@ -19,11 +19,10 @@ func main(){
   var userPoints, botPoints int
   for{
     botValue := randomGen(); 
-    userValue := 99 //for invalid key press
+    userValue := 99 
     userInput := readingSingleKey() 
     clearScreen()
     invalid := false 
-    //Pressing q exits the program
     if userInput == 'q'{
       break
     }
@@ -44,7 +43,6 @@ func main(){
       invalid = true 
       fmt.Println("Enter a valid input") 
     }
-    //If invlid is true this code will not work
     if !invalid {
       switch{
       case userValue == 0 && botValue == 1:
@@ -186,4 +184,3 @@ func showPoints(userPoints, botPoints int){
       fmt.Println("bot points: " ,botPoints)
 }
 
-/* Make UI Tidy */
